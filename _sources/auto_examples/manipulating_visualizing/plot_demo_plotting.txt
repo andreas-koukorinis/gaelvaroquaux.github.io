@@ -1,0 +1,68 @@
+
+
+.. _example_manipulating_visualizing_plot_demo_plotting.py:
+
+
+Plotting in nilearn
+==========================
+
+Nilearn comes with a set of plotting function for Nifti-like images,
+see :ref:`plotting` for more details.
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_demo_plotting_5.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_demo_plotting_1.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_demo_plotting_3.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_demo_plotting_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_demo_plotting_6.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_demo_plotting_4.png
+            :scale: 47
+
+
+**Script output**:
+
+.. rst-class:: max_height
+
+ ::
+
+    Downloading data from http://brainomics.cea.fr/localizer/brainomics_data_3.zip?rql=Any%20X,XT,XL,XI,XF,XD%20WHERE%20X%20is%20Scan,%20X%20type%20XT,%20X%20concerns%20S,%20X%20label%20XL,%20X%20identifier%20XI,%20X%20format%20XF,%20X%20description%20XD,%20S%20identifier%20%3C%3D%20%22S04%22,%20X%20type%20IN(%22c%20map%22,%20%22t%20map%22),%20X%20label%20%22left%20auditory%20%26%20visual%20click%20vs%20right%20auditory%26visual%20click%22&vid=data-zip ...
+  ...done. (4 seconds, 0 min)
+  extracting data from /home/varoquau/nilearn_data/brainomics_localizer/617b37c2c0853b68f41da910f8f76db8/brainomics_data_3.zip...
+     ...done.
+
+
+
+**Python source code:** :download:`plot_demo_plotting.py <plot_demo_plotting.py>`
+
+.. literalinclude:: plot_demo_plotting.py
+    :lines: 8-
+
+**Total running time of the example:**  12.56 seconds 
+( 0 minutes  12.56 seconds)
+    

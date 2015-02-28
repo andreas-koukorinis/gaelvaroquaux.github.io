@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Nilearn: Machine learning for NeuroImaging in Python &mdash; Machine learning for NeuroImaging</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="top" title="Machine learning for NeuroImaging" href="index.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="nilearn, neuroimaging, python, neuroscience, machinelearning">
+<script type="text/javascript">
+$(function () {
+    // Lock the table of content to a fixed position once we scroll enough
+    var top = 105 + $('.sphinxsidebarwrapper').offset().top - parseFloat($('.sphinxsidebarwrapper').css('margin-top').replace(/auto/, 0)),
+        sections = {},
+        i        = 0,
+	url	 = document.URL.replace(/#.*$/, ""),
+	current_section = 0;
+
+    // Grab positions of our sections 
+    $('.headerlink').each(function(){
+        sections[this.href.replace(url, '')] = $(this).offset().top - 50;
+    });
+
+    $(window).scroll(function(event) {
+	var pos   = $(window).scrollTop();
+	// Lock the table of content to a fixed position once we scroll enough
+	if(pos > top){
+	    //begin to scroll
+	    $('.sphinxsidebarwrapper').css("position", "fixed");
+	    $('.sphinxsidebarwrapper').css("top", -105);
+	}
+	else{
+	    //lock it back into place
+	    $('.sphinxsidebarwrapper').css("position", "relative");
+	    $('.sphinxsidebarwrapper').css("top",0);
+	}
+            
+	// Highlight the current section
+	$('a.internal').removeClass('active');
+        for(i in sections){
+            if(sections[i] > pos){
+		break;
+            };
+	    if($('a.internal[href$="' + i + '"]').is(':visible')){
+		current_section = i;
+	    };
+        }
+	$('a.internal[href$="' + current_section + '"]').addClass('active');
+    });
+
+});
+</script>
+
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head>
+  <body>
+<div id="logo-banner">
+  <div class="logo">
+    <a href="index.html">
+      <img src="_static/nilearn-logo.png" alt="Nilearn logo"  border="0" />
+    </a>
+  </div>
+  <!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="auto_examples/plot_haxby_anova_svm.html">SVM</a></big>
+    </li>
+    <li>
+      <small><a href="data_analysis/parcellating.html">Ward
+          clustering</a></small>
+    </li>
+    <li>
+      <a href="building_blocks/haxby_searchlight.html">Searchlight</a>
+    </li>
+    <li>
+      <big><a href="data_analysis/resting_state_networks.html">ICA</a></big>
+    </li>
+    <li>
+      <a href="building_blocks/data_preparation.html">Nifti IO</a>
+    </li>
+    <li>
+      <a href="modules/reference.html#module-nilearn.datasets">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+  <div class="banner">
+    <h1>Nilearn:</h1>
+    <h2>Machine learning for Neuro-Imaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div id="cse" style="width: 100%;"></div>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load('search', '1', {language : 'en'});
+      google.setOnLoadCallback(function() {
+      var customSearchControl = new google.search.CustomSearchControl('014136483057745874622:r-npolb1uki');
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      customSearchControl.draw('cse', options);
+      }, true);
+    </script>
+  </div>
+</div>
+
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="index.html">Nilearn Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="modules/reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="AUTHORS.html">About</a>|&nbsp;</li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="AUTHORS.html#citing">citing the
+                    scikit-learn</a> if you use it.</p></li>
+  </ul>
+
+  <h3><a href="user_guide.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">0.1.2</a><ul>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">0.1.1</a><ul>
+<li><a class="reference internal" href="#id3">Changelog</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">0.1</a><ul>
+<li><a class="reference internal" href="#id5">Changelog</a></li>
+</ul>
+</li>
+</ul>
+
+
+<div class="navbar">
+</div> <!-- end navbar -->
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="id1">
+<h1>0.1.2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>
+<p>The 0.1.2 release is a bugfix release, specifically to fix the
+NiftiMapsMasker.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>0.1.1<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>Changelog<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>The main change compared to 0.1 is the addition of connectome plotting
+via the nilearn.plotting.plot_connectome function. See the
+<a class="reference external" href="building_blocks/plotting.html">plotting documentation</a>
+for more details.</p>
+<p>Contributors (from <tt class="docutils literal"><span class="pre">git</span> <span class="pre">shortlog</span> <span class="pre">-ns</span> <span class="pre">0.1..0.1.1</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre>81  Loïc Estève
+18  Alexandre Abraham
+18  Danilo Bzdok
+14  Ben Cipollini
+ 2  Gaël Varoquaux
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>0.1<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Changelog<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>First release of nilearn.</p>
+<p>Contributors (from <tt class="docutils literal"><span class="pre">git</span> <span class="pre">shortlog</span> <span class="pre">-ns</span> <span class="pre">0.1</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre>600  Gaël Varoquaux
+483  Alexandre Abraham
+302  Loïc Estève
+254  Philippe Gervais
+122  Virgile Fritsch
+ 83  Michael Eickenberg
+ 59  Jean Kossaifi
+ 57  Jaques Grobler
+ 46  Danilo Bzdok
+ 35  Chris Filo Gorgolewski
+ 28  Ronald Phlypo
+ 25  Ben Cipollini
+ 15  Bertrand Thirion
+ 13  Alexandre Gramfort
+ 12  Fabian Pedregosa
+ 11  Yannick Schwartz
+  9  Mehdi Rahim
+  7  Óscar Nájera
+  6  Elvis Dohmatob
+  4  Konstantin Shmelkov
+  3  Jason Gors
+  3  Salma Bougacha
+  1  Alexandre Savio
+  1  Jan Margeta
+  1  Matthias Ekman
+  1  Michael Waskom
+  1  Vincent Michel
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="np-modindex.html" title="Python Module Index"
+             >modules</a></li>
+<li><a href="index.html">Nilearn Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="modules/reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="AUTHORS.html">About</a>|&nbsp;</li>
+<li id="navbar-ecosystem"><a href="http://www.nipy.org/">Nipy ecosystem</a></li>
+ 
+      </ul>
+    </div>
+    <div class="footer">
+            &copy; The nilearn developers 2010-2015.
+          Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
+        <span style="padding-left: 5ex;">
+          <a href="_sources/whats_new.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>
