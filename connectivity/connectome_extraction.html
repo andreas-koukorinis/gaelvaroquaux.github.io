@@ -215,13 +215,14 @@ $(function () {
           <div class="body">
             
   <div class="section" id="connectome-extraction-inverse-covariance-for-direct-connections">
-<span id="interaction-network"></span><h1>3.2. Connectome extraction: inverse covariance for direct connections<a class="headerlink" href="#connectome-extraction-inverse-covariance-for-direct-connections" title="Permalink to this headline">¶</a></h1>
+<span id="connectome-extraction"></span><h1>3.2. Connectome extraction: inverse covariance for direct connections<a class="headerlink" href="#connectome-extraction-inverse-covariance-for-direct-connections" title="Permalink to this headline">¶</a></h1>
 <div class="topic">
 <p class="topic-title first"><strong>Page summary</strong></p>
-<p>Given a set of time-series (eg as extracted in the previous section
+<p>Given a set of time-series (eg as extracted in the previous section)
 A <em>functional connectome</em> is a set of connections representing brain
 interactions between regions. Here we show the use of sparse-inverse
-covariance estimators to extract functional connectomes.</p>
+covariance to extract functional connectomes focussing only on direct
+interactions between regions.</p>
 </div>
 <div class="contents local topic" id="contents">
 <p class="topic-title first"><strong>Contents</strong></p>
@@ -247,8 +248,6 @@ covariance matrix <strong>C</strong> for signals from different brain regions. E
 element of <strong>C</strong> gives the covariance between two brain regions. The same
 information can be represented as a weighted graph, vertices being brain
 regions, weights on edges being covariances (gaussian graphical model).
-In turn, this graph can be interpreted as a connection graph between
-brain regions, with weights giving the strength of the connection.
 However, coefficients in a covariance matrix reflects direct as well as
 indirect connections. Covariance matrices tend to be dense, and it is
 rather difficult to extract from them only the direct connections between
@@ -258,14 +257,10 @@ two regions.</p>
 covariances between two regions conditioned on all the others. It thus
 gives only direct connections between regions.</p>
 <p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="covariance" src="../_images/plot_adhd_covariance_53.png" style="width: 257.4px; height: 101.4px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="precision" src="../_images/plot_adhd_covariance_62.png" style="width: 312.0px; height: 234.0px;" /></a>
-</strong></p><p>Sparsity in the inverse covariance matrix is important to reduce noise in
-the estimated connectome by limiting the number of edges (technicaly,
-this problem arises from multi-colinearity in time series, when the
-number of time points is not very large compared to the number of
-regions). Here we explore 2 different options to estimate sparse inverse
-covariance estimates:</p>
+<strong><a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="covariance" src="../_images/plot_adhd_covariance_22.png" style="width: 363.0px; height: 143.0px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="precision" src="../_images/plot_adhd_covariance_12.png" style="width: 363.0px; height: 143.0px;" /></a>
+</strong></p><p>Here we explore 2 different options to estimate sparse inverse covariance
+estimates:</p>
 <ul class="simple">
 <li>The <a class="reference external" href="http://biostatistics.oxfordjournals.org/content/9/3/432.short">graph lasso [Friedman et al, Biostatistics 2007]</a> is useful to estimate one
 inverse covariance, ie to work on single-subject data or concatenate
@@ -364,7 +359,7 @@ estimation and its implementation can be found in <a class="reference internal" 
             &copy; The nilearn developers 2010-2015.
           Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
         <span style="padding-left: 5ex;">
-          <a href="../_sources/connectivity/interaction_learning.txt"
+          <a href="../_sources/connectivity/connectome_extraction.txt"
         	 rel="nofollow">Show this page source</a>
         </span>
     </div>
