@@ -100,6 +100,6 @@ estimation of connectivity structre for a synthetic dataset.
 .. literalinclude:: plot_simulated_connectome.py
     :lines: 9-
 
-**Total running time of the example:**  3.04 seconds 
-( 0 minutes  3.04 seconds)
+**Total running time of the example:**  3.50 seconds 
+( 0 minutes  3.50 seconds)
     
