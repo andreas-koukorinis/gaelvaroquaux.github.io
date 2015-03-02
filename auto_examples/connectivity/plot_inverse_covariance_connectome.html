@@ -184,23 +184,28 @@ $(function () {
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="extracting-signals-of-a-probabilistic-atlas-of-rest-functional-regions">
-<span id="example-connectivity-plot-probabilistic-atlas-extraction-py"></span><h1>Extracting signals of a probabilistic atlas of rest functional regions<a class="headerlink" href="#extracting-signals-of-a-probabilistic-atlas-of-rest-functional-regions" title="Permalink to this headline">¶</a></h1>
-<p>This example extracts the signal on regions defined via a probabilistic
-atlas, to construct a functional connectome.</p>
+  <div class="section" id="computing-a-connectome-with-sparse-inverse-covariance">
+<span id="example-connectivity-plot-inverse-covariance-connectome-py"></span><h1>Computing a connectome with sparse inverse covariance<a class="headerlink" href="#computing-a-connectome-with-sparse-inverse-covariance" title="Permalink to this headline">¶</a></h1>
+<p>This example constructs a functional connectome using the sparse inverse
+covariance.</p>
 <p>We use the <a class="reference external" href="https://team.inria.fr/parietal/research/spatial_patterns/spatial-patterns-in-resting-state/">MSDL atlas</a>
-of functional regions in rest.</p>
-<p>The key to extract signals is to use the
-<a class="reference internal" href="../../modules/generated/nilearn.input_data.NiftiMapsMasker.html#nilearn.input_data.NiftiMapsMasker" title="nilearn.input_data.NiftiMapsMasker"><tt class="xref py py-class docutils literal"><span class="pre">nilearn.input_data.NiftiMapsMasker</span></tt></a> that can transform nifti
-objects to time series using a probabilistic atlas.</p>
+of functional regions in rest, and the
+<a class="reference internal" href="../../modules/generated/nilearn.input_data.NiftiMapsMasker.html#nilearn.input_data.NiftiMapsMasker" title="nilearn.input_data.NiftiMapsMasker"><tt class="xref py py-class docutils literal"><span class="pre">nilearn.input_data.NiftiMapsMasker</span></tt></a> to extract time series.</p>
+<p>Note that the inverse covariance (or precision) contains values that can
+be linked to <em>negated</em> partial correlations, so we negated it for
+display.</p>
 <p>As the MSDL atlas comes with (x, y, z) MNI coordinates for the different
 regions, we can visualize the matrix as a graph of interaction in a
 brain. To avoid having too dense a graph, we represent only the 20% edges
 with the highest values.</p>
 <ul class="horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/plot_probabilistic_atlas_extraction_2.png"><img alt="../../_images/plot_probabilistic_atlas_extraction_2.png" src="../../_images/plot_probabilistic_atlas_extraction_2.png" style="width: 310.2px; height: 122.2px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_inverse_covariance_connectome_3.png"><img alt="../../_images/plot_inverse_covariance_connectome_3.png" src="../../_images/plot_inverse_covariance_connectome_3.png" style="width: 470.0px; height: 470.0px;" /></a>
 </li>
-<li><a class="first reference internal image-reference" href="../../_images/plot_probabilistic_atlas_extraction_1.png"><img alt="../../_images/plot_probabilistic_atlas_extraction_1.png" src="../../_images/plot_probabilistic_atlas_extraction_1.png" style="width: 470.0px; height: 470.0px;" /></a>
+<li><a class="first reference internal image-reference" href="../../_images/plot_inverse_covariance_connectome_2.png"><img alt="../../_images/plot_inverse_covariance_connectome_2.png" src="../../_images/plot_inverse_covariance_connectome_2.png" style="width: 310.2px; height: 122.2px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_inverse_covariance_connectome_4.png"><img alt="../../_images/plot_inverse_covariance_connectome_4.png" src="../../_images/plot_inverse_covariance_connectome_4.png" style="width: 310.2px; height: 122.2px;" /></a>
+</li>
+<li><a class="first reference internal image-reference" href="../../_images/plot_inverse_covariance_connectome_1.png"><img alt="../../_images/plot_inverse_covariance_connectome_1.png" src="../../_images/plot_inverse_covariance_connectome_1.png" style="width: 470.0px; height: 470.0px;" /></a>
 </li>
 </ul>
 <p><strong>Script output</strong>:</p>
@@ -208,16 +213,16 @@ with the highest values.</p>
 [NiftiMapsMasker.fit_transform] loading images from /home/varoquau/nilearn_data/adhd/data/3902469/3902469_rest_tshift_RPI_voreg_mni.nii.gz
 [NiftiMapsMasker.fit_transform] resampling labels
 [Memory]    0.0s, 0.0min: Loading resample_img...
-________________________________________resample_img cache loaded - 0.6s, 0.0min
+________________________________________resample_img cache loaded - 2.8s, 0.0min
 [NiftiMapsMasker.fit_transform] extracting region signals
-[Memory]    0.8s, 0.0min: Loading img_to_signals_maps...
+[Memory]    3.5s, 0.1min: Loading img_to_signals_maps...
 _________________________________img_to_signals_maps cache loaded - 0.0s, 0.0min
 [NiftiMapsMasker.fit_transform] cleaning extracted signals
-[Memory]    0.8s, 0.0min: Loading clean...
+[Memory]    3.5s, 0.1min: Loading clean...
 _______________________________________________clean cache loaded - 0.0s, 0.0min
 </pre></div>
 </div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_probabilistic_atlas_extraction.py"><tt class="xref download docutils literal"><span class="pre">plot_probabilistic_atlas_extraction.py</span></tt></a></p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_inverse_covariance_connectome.py"><tt class="xref download docutils literal"><span class="pre">plot_inverse_covariance_connectome.py</span></tt></a></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="n">atlas</span> <span class="o">=</span> <a href="../../modules/generated/nilearn.datasets.fetch_msdl_atlas.html#nilearn.datasets.fetch_msdl_atlas"><span class="n">datasets</span><span class="o">.</span><span class="n">fetch_msdl_atlas</span></a><span class="p">()</span>
 <span class="n">atlas_filename</span> <span class="o">=</span> <span class="n">atlas</span><span class="p">[</span><span class="s">&#39;maps&#39;</span><span class="p">]</span>
@@ -239,30 +244,51 @@ _______________________________________________clean cache loaded - 0.0s, 0.0min
 <span class="n">time_series</span> <span class="o">=</span> <a href="../../modules/generated/nilearn.input_data.NiftiMapsMasker.html#nilearn.input_data.NiftiMapsMasker"><span class="n">masker</span></a><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                    <span class="n">confounds</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">confounds</span><span class="p">)</span>
 
-<span class="n">correlation_matrix</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.corrcoef.html#numpy.corrcoef"><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span></a><span class="p">(</span><span class="n">time_series</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="c"># Compute the sparse inverse covariance</span>
+<span class="kn">from</span> <span class="nn">sklearn.covariance</span> <span class="kn">import</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">GraphLassoCV</span></a>
+<a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a> <span class="o">=</span> <a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">GraphLassoCV</span></a><span class="p">()</span>
 
-<span class="c"># Display the correlation matrix</span>
+<a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>
+
+<span class="c"># Display the connectome matrix</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&quot;nearest&quot;</span><span class="p">)</span>
-<span class="c"># And display the labels</span>
-<span class="n">x_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-<span class="n">y_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)</span>
 
-<span class="c"># And now display the corresponding graph</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 <span class="n">coords</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.vstack.html#numpy.vstack"><span class="n">np</span><span class="o">.</span><span class="n">vstack</span></a><span class="p">((</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">labels</span></a><span class="p">[</span><span class="s">&#39;x&#39;</span><span class="p">],</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">labels</span></a><span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">],</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">labels</span></a><span class="p">[</span><span class="s">&#39;z&#39;</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
 
-<span class="c"># We threshold to keep only the 20% of edges with the highest value</span>
-<span class="c"># because the graph is very dense</span>
-<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="n">correlation_matrix</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span>
-                         <span class="n">edge_threshold</span><span class="o">=</span><span class="s">&quot;80%&quot;</span><span class="p">)</span>
+<span class="c"># Display the covariance</span>
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&quot;nearest&quot;</span><span class="p">,</span>
+           <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu_r</span><span class="p">)</span>
+<span class="c"># And display the labels</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">y_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Covariance&#39;</span><span class="p">)</span>
+
+<span class="c"># And now display the corresponding graph</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s">&#39;Covariance&#39;</span><span class="p">)</span>
+
+
+<span class="c"># Display the sparse inverse covariance (we negate it to get partial</span>
+<span class="c"># correlations)</span>
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow"><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="o">-</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a><span class="o">.</span><span class="n">precision_</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&quot;nearest&quot;</span><span class="p">,</span>
+           <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu_r</span><span class="p">)</span>
+<span class="c"># And display the labels</span>
+<span class="n">x_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.xticks"><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">y_ticks</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.yticks"><span class="n">plt</span><span class="o">.</span><span class="n">yticks</span></a><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)),</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.recarray.ndim.html#numpy.recarray"><span class="n">names</span></a><span class="p">)</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.title"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s">&#39;Sparse inverse covariance&#39;</span><span class="p">)</span>
+
+<span class="c"># And now display the corresponding graph</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="o">-</span><a href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV"><span class="n">estimator</span></a><span class="o">.</span><span class="n">precision_</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s">&#39;Sparse inverse covariance&#39;</span><span class="p">)</span>
 
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  3.27 seconds
-( 0 minutes  3.27 seconds)</p>
+<p><strong>Total running time of the example:</strong>  26.72 seconds
+( 0 minutes  26.72 seconds)</p>
 </div>
 
 
@@ -290,7 +316,7 @@ _______________________________________________clean cache loaded - 0.0s, 0.0min
             &copy; The nilearn developers 2010-2015.
           Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.2.
         <span style="padding-left: 5ex;">
-          <a href="../../_sources/auto_examples/connectivity/plot_probabilistic_atlas_extraction.txt"
+          <a href="../../_sources/auto_examples/connectivity/plot_inverse_covariance_connectome.txt"
         	 rel="nofollow">Show this page source</a>
         </span>
     </div>

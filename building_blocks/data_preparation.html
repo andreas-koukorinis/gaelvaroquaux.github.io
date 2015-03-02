@@ -488,7 +488,7 @@ the <a class="reference external" href="https://team.inria.fr/parietal/research/
 <div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;-- Fetching datasets ...&quot;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="n">msdl_atlas_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_msdl_atlas</span><span class="p">()</span>
-<span class="n">adhd_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_adhd</span><span class="p">(</span><span class="n">n_subjects</span><span class="o">=</span><span class="n">n_subjects</span><span class="p">)</span>
+<span class="n">adhd_dataset</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_adhd</span><span class="p">(</span><span class="n">n_subjects</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This atlas defines its regions using maps. The path to the corresponding file
@@ -506,20 +506,37 @@ several subjects can be performed like this:</p>
     <span class="n">memory</span><span class="o">=</span><span class="n">mem</span><span class="p">,</span> <span class="n">memory_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">masker</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
-<span class="n">subject_time_series</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">func_filenames</span> <span class="o">=</span> <span class="n">adhd_dataset</span><span class="o">.</span><span class="n">func</span>
-<span class="n">confound_filenames</span> <span class="o">=</span> <span class="n">adhd_dataset</span><span class="o">.</span><span class="n">confounds</span>
-<span class="k">for</span> <span class="n">func_filename</span><span class="p">,</span> <span class="n">confound_filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">func_filenames</span><span class="p">,</span>
-                                            <span class="n">confound_filenames</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">&quot;Processing file </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">func_filename</span><span class="p">)</span>
+<span class="n">fmri_filename</span> <span class="o">=</span> <span class="n">adhd_dataset</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">confound_filename</span> <span class="o">=</span> <span class="n">adhd_dataset</span><span class="o">.</span><span class="n">confounds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-    <span class="c"># Computing some confounds</span>
-    <span class="n">hv_confounds</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">nilearn</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">high_variance_confounds</span><span class="p">)(</span>
-        <span class="n">func_filename</span><span class="p">)</span>
+<span class="c"># Computing some confounds</span>
+<span class="n">hv_confounds</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">nilearn</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">high_variance_confounds</span><span class="p">)(</span>
+    <span class="n">fmri_filename</span><span class="p">)</span>
 
-    <span class="n">region_ts</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">func_filename</span><span class="p">,</span>
-                                 <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="n">hv_confounds</span><span class="p">,</span> <span class="n">confound_filename</span><span class="p">])</span>
-    <span class="n">subject_time_series</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">region_ts</span><span class="p">)</span>
+<span class="n">time_series</span> <span class="o">=</span> <span class="n">masker</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">fmri_filename</span><span class="p">,</span>
+                                <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="n">hv_confounds</span><span class="p">,</span> <span class="n">confound_filename</span><span class="p">])</span>
+
+
+<span class="k">print</span><span class="p">(</span><span class="s">&quot;-- Computing graph-lasso inverse matrix ...&quot;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">covariance</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">covariance</span><span class="o">.</span><span class="n">GraphLassoCV</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>
+
+<span class="c"># Displaying results ##########################################################</span>
+<span class="n">atlas_imgs</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">iter_img</span><span class="p">(</span><span class="n">msdl_atlas_dataset</span><span class="o">.</span><span class="n">maps</span><span class="p">)</span>
+<span class="n">atlas_region_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">plotting</span><span class="o">.</span><span class="n">find_xyz_cut_coords</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">atlas_imgs</span><span class="p">]</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s">&quot;GraphLasso&quot;</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="o">-</span><span class="n">gl</span><span class="o">.</span><span class="n">precision_</span><span class="p">,</span> <span class="n">atlas_region_coords</span><span class="p">,</span>
+                         <span class="n">edge_threshold</span><span class="o">=</span><span class="s">&#39;90%&#39;</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s">&quot;Sparse inverse covariance&quot;</span><span class="p">)</span>
+<span class="n">plotting</span><span class="o">.</span><span class="n">plot_connectome</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span>
+                         <span class="n">atlas_region_coords</span><span class="p">,</span> <span class="n">edge_threshold</span><span class="o">=</span><span class="s">&#39;90%&#39;</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s">&quot;Covariance&quot;</span><span class="p">)</span>
+<span class="n">plot_matrices</span><span class="p">(</span><span class="n">gl</span><span class="o">.</span><span class="n">covariance_</span><span class="p">,</span> <span class="n">gl</span><span class="o">.</span><span class="n">precision_</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><cite>region_ts</cite> is a <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html">numpy.ndarray</a>,
@@ -543,15 +560,7 @@ case, covariance between region signals can be obtained for each
 subject either using the <a class="reference external" href="http://biostatistics.oxfordjournals.org/content/9/3/432.short">graph lasso</a>
 or the <a class="reference external" href="http://arxiv.org/abs/1207.4255">group-sparse covariance</a>
 algorithm:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">print</span><span class="p">(</span><span class="s">&quot;-- Computing group-sparse precision matrices ...&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">nilearn.group_sparse_covariance</span> <span class="kn">import</span> <span class="n">GroupSparseCovarianceCV</span>
-<span class="n">gsc</span> <span class="o">=</span> <span class="n">GroupSparseCovarianceCV</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">gsc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">subject_time_series</span><span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">&quot;-- Computing graph-lasso precision matrices ...&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">covariance</span>
-<span class="n">gl</span> <span class="o">=</span> <span class="n">covariance</span><span class="o">.</span><span class="n">GraphLassoCV</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">gl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">subject_time_series</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre>
 </pre></div>
 </div>
 </div>

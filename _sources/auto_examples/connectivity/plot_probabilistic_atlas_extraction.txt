@@ -30,12 +30,12 @@ with the highest values.
 
     *
 
-      .. image:: images/plot_probabilistic_atlas_extraction_1.png
+      .. image:: images/plot_probabilistic_atlas_extraction_2.png
             :scale: 47
 
     *
 
-      .. image:: images/plot_probabilistic_atlas_extraction_2.png
+      .. image:: images/plot_probabilistic_atlas_extraction_1.png
             :scale: 47
 
 
@@ -49,12 +49,12 @@ with the highest values.
   [NiftiMapsMasker.fit_transform] loading images from /home/varoquau/nilearn_data/adhd/data/3902469/3902469_rest_tshift_RPI_voreg_mni.nii.gz
   [NiftiMapsMasker.fit_transform] resampling labels
   [Memory]    0.0s, 0.0min: Loading resample_img...
-  ________________________________________resample_img cache loaded - 0.3s, 0.0min
+  ________________________________________resample_img cache loaded - 0.6s, 0.0min
   [NiftiMapsMasker.fit_transform] extracting region signals
-  [Memory]    0.5s, 0.0min: Loading img_to_signals_maps...
+  [Memory]    0.8s, 0.0min: Loading img_to_signals_maps...
   _________________________________img_to_signals_maps cache loaded - 0.0s, 0.0min
   [NiftiMapsMasker.fit_transform] cleaning extracted signals
-  [Memory]    0.5s, 0.0min: Loading clean...
+  [Memory]    0.8s, 0.0min: Loading clean...
   _______________________________________________clean cache loaded - 0.0s, 0.0min
 
 
@@ -64,6 +64,6 @@ with the highest values.
 .. literalinclude:: plot_probabilistic_atlas_extraction.py
     :lines: 22-
 
-**Total running time of the example:**  2.74 seconds 
-( 0 minutes  2.74 seconds)
+**Total running time of the example:**  3.27 seconds 
+( 0 minutes  3.27 seconds)
     

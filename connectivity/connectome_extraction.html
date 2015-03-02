@@ -184,7 +184,6 @@ $(function () {
 <li><a class="reference internal" href="#sparse-inverse-covariance-for-functional-connectomes">3.2.1. Sparse inverse covariance for functional connectomes</a></li>
 <li><a class="reference internal" href="#sparse-inverse-covariance-on-multiple-subjects">3.2.2. Sparse inverse covariance on multiple subjects</a></li>
 <li><a class="reference internal" href="#comparing-the-different-approaches-on-simulated-data">3.2.3. Comparing the different approaches on simulated data</a></li>
-<li><a class="reference internal" href="#a-real-data-example">3.2.4. A real-data example</a></li>
 </ul>
 </li>
 </ul>
@@ -227,7 +226,6 @@ interactions between regions.</p>
 <li><a class="reference internal" href="#sparse-inverse-covariance-for-functional-connectomes" id="id1">Sparse inverse covariance for functional connectomes</a></li>
 <li><a class="reference internal" href="#sparse-inverse-covariance-on-multiple-subjects" id="id2">Sparse inverse covariance on multiple subjects</a></li>
 <li><a class="reference internal" href="#comparing-the-different-approaches-on-simulated-data" id="id3">Comparing the different approaches on simulated data</a></li>
-<li><a class="reference internal" href="#a-real-data-example" id="id4">A real-data example</a></li>
 </ul>
 </div>
 <div class="topic">
@@ -255,10 +253,7 @@ interesting to use the inverse covariance matrix, ie the <em>precision
 matrix</em>. It gives <strong>only direct connections between regions</strong>, as it
 contains <em>partial covariances</em>, which are covariances between two regions
 conditioned on all the others.</p>
-<p class="centered">
-<strong><a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="covariance" src="../_images/plot_adhd_covariance_22.png" style="width: 363.0px; height: 143.0px;" /></a>
- <a class="reference external image-reference" href="../auto_examples/connectivity/plot_adhd_covariance.html"><img alt="precision" src="../_images/plot_adhd_covariance_12.png" style="width: 363.0px; height: 143.0px;" /></a>
-</strong></p><p>To recover well the interaction structure, a <strong>sparse inverse covariance
+<p>To recover well the interaction structure, a <strong>sparse inverse covariance
 estimator</strong> is necessary. The GraphLasso, implemented in scikit-learn&#8217;s
 estimator <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLassoCV.html#sklearn.covariance.GraphLassoCV" title="(in scikit-learn v0.15)"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.GraphLassoCV</span></tt></a> is a good, simple
 solution. To use it, you need to create an estimator object:</p>
@@ -268,7 +263,7 @@ solution. To use it, you need to create an estimator object:</p>
 </div>
 <p>And then you can fit it on the activation time series, for instance
 extracted in <a class="reference internal" href="functional_connectomes.html#functional-connectomes"><em>the previous section</em></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>  <span class="c"># DOCTEST: +skip</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">time_series</span><span class="p">)</span>  
 </pre></div>
 </div>
 <p>The covariance matrix and inverse-covariance matrix (precision matrix)
@@ -278,11 +273,28 @@ of the estimator:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">estimator</span><span class="o">.</span><span class="n">precision_</span>  
 </pre></div>
 </div>
-<div class="topic">
+<p class="centered">
+<strong><a class="reference external image-reference" href="../auto_examples/connectivity/plot_inverse_covariance_connectome.html"><img alt="covariance" src="../_images/plot_inverse_covariance_connectome_11.png" style="width: 400.0px; height: 400.0px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/connectivity/plot_inverse_covariance_connectome.html"><img alt="precision" src="../_images/plot_inverse_covariance_connectome_31.png" style="width: 400.0px; height: 400.0px;" /></a>
+</strong></p><p class="centered">
+<strong><a class="reference external image-reference" href="../auto_examples/connectivity/plot_inverse_covariance_connectome.html"><img alt="covariance_graph" src="../_images/plot_inverse_covariance_connectome_21.png" style="width: 363.0px; height: 143.0px;" /></a>
+ <a class="reference external image-reference" href="../auto_examples/connectivity/plot_inverse_covariance_connectome.html"><img alt="precision_graph" src="../_images/plot_inverse_covariance_connectome_41.png" style="width: 363.0px; height: 143.0px;" /></a>
+</strong></p><div class="topic">
 <p class="topic-title first"><strong>Parameter selection</strong></p>
 <p>The parameter controlling the sparsity is set by <a class="reference external" href="http://scikit-learn.org/stable/modules/cross_validation.html">cross-validation</a>
 scheme. If you want to specify it manually, use the estimator
 <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.covariance.GraphLasso.html#sklearn.covariance.GraphLasso" title="(in scikit-learn v0.15)"><tt class="xref py py-class docutils literal"><span class="pre">sklearn.covariance.GraphLasso</span></tt></a>.</p>
+</div>
+<div class="topic">
+<p class="topic-title first"><strong>Full example</strong></p>
+<p>See the following example for a full file running the analysis:
+<a class="reference internal" href="../auto_examples/connectivity/plot_inverse_covariance_connectome.html#example-connectivity-plot-inverse-covariance-connectome-py"><em>Computing a connectome with sparse inverse covariance</em></a></p>
+</div>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise: computing sparse inverse covariance</strong></p>
+<p>Compute the correlation matrix of the first subject of the ADHD
+dataset downloaded with <a class="reference internal" href="../modules/generated/nilearn.datasets.fetch_adhd.html#nilearn.datasets.fetch_adhd" title="nilearn.datasets.fetch_adhd"><tt class="xref py py-func docutils literal"><span class="pre">nilearn.datasets.fetch_adhd</span></tt></a></p>
+<p><strong>Hints:</strong> The example above has the solution</p>
 </div>
 <div class="topic">
 <p class="topic-title first"><strong>Reference</strong></p>
@@ -314,7 +326,7 @@ a list of time series:</p>
 <div class="topic">
 <p class="topic-title first"><strong>Full example</strong></p>
 <p>See the following example for a full file running the analysis:
-<a class="reference internal" href="../auto_examples/connectivity/plot_adhd_covariance.html#example-connectivity-plot-adhd-covariance-py"><em>Computation of covariance matrix between brain regions</em></a></p>
+<a class="reference internal" href="../auto_examples/connectivity/plot_adhd_covariance.html#example-connectivity-plot-adhd-covariance-py"><em>Sparse inverse covariance for a functional connectome</em></a></p>
 </div>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise: computing the correlation matrix of rest fmri</strong></p>
@@ -364,13 +376,8 @@ information.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The complete source code for this example can be found here:
-<a class="reference internal" href="../auto_examples/connectivity/plot_connect_comparison.html"><em>plot_connect_comparison.py</em></a></p>
+<a class="reference internal" href="../auto_examples/connectivity/plot_simulated_connectome.html#example-connectivity-plot-simulated-connectome-py"><em>Connectivity structure estimation on simulated data</em></a></p>
 </div>
-</div>
-<div class="section" id="a-real-data-example">
-<h2><a class="toc-backref" href="#id4">3.2.4. A real-data example</a><a class="headerlink" href="#a-real-data-example" title="Permalink to this headline">¶</a></h2>
-<p>For a detailed example on real data:
-<a class="reference internal" href="../auto_examples/connectivity/plot_adhd_covariance.html"><em>plot_adhd_covariance.py</em></a></p>
 <hr class="docutils" />
 <p>A lot of technical details on the algorithm used for group-sparse
 estimation and its implementation can be found in <a class="reference internal" href="../developers/group_sparse_covariance.html"><em>Group-sparse covariance estimation</em></a>.</p>

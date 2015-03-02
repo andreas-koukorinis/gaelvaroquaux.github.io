@@ -275,6 +275,30 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
 .. raw:: html
 
 
+    <div class="thumbnailContainer" tooltip="This example constructs a functional connectome using the sparse inverse covariance.">
+
+.. figure:: connectivity/images/thumb/plot_inverse_covariance_connectome.png
+   :target: ./connectivity/plot_inverse_covariance_connectome.html
+
+   :ref:`example_connectivity_plot_inverse_covariance_connectome.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   connectivity/plot_inverse_covariance_connectome
+
+
+
+.. raw:: html
+
+
     <div class="thumbnailContainer" tooltip="This example shows a comparison of graph lasso and group-sparse covariance estimation of connec...">
 
 .. figure:: connectivity/images/thumb/plot_simulated_connectome.png
@@ -293,6 +317,30 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
    :hidden:
 
    connectivity/plot_simulated_connectome
+
+
+
+.. raw:: html
+
+
+    <div class="thumbnailContainer" tooltip="This example shows how to extract signals from regions defined by an atlas, and to estimate a f...">
+
+.. figure:: connectivity/images/thumb/plot_adhd_covariance.png
+   :target: ./connectivity/plot_adhd_covariance.html
+
+   :ref:`example_connectivity_plot_adhd_covariance.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   connectivity/plot_adhd_covariance
 
 
 
@@ -325,10 +373,10 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
 
     <div class="thumbnailContainer" tooltip="This example shows how to extract signals from regions defined by an atlas, and to estimate a c...">
 
-.. figure:: connectivity/images/thumb/plot_adhd_covariance.png
-   :target: ./connectivity/plot_adhd_covariance.html
+.. figure:: connectivity/images/thumb/plot_multi_subject_connectome.png
+   :target: ./connectivity/plot_multi_subject_connectome.html
 
-   :ref:`example_connectivity_plot_adhd_covariance.py`
+   :ref:`example_connectivity_plot_multi_subject_connectome.py`
 
 
 .. raw:: html
@@ -340,7 +388,7 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
 .. toctree::
    :hidden:
 
-   connectivity/plot_adhd_covariance
+   connectivity/plot_multi_subject_connectome
 
 
 .. raw:: html
