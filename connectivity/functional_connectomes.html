@@ -265,7 +265,7 @@ regions, with a thick cortical model:</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li>The <a class="reference internal" href="../building_blocks/plotting.html#plotting"><em>plotting documentation</em></a></li>
+<li>The <a class="reference internal" href="../manipulating_visualizing/plotting.html#plotting"><em>plotting documentation</em></a></li>
 <li>The <a class="reference internal" href="../modules/reference.html#datasets-ref"><em>dataset downloaders</em></a></li>
 </ul>
 </div>
@@ -381,12 +381,17 @@ with MNI coordinates for each region (see for instance example:
 <a class="reference internal" href="../auto_examples/connectivity/plot_probabilistic_atlas_extraction.html#example-connectivity-plot-probabilistic-atlas-extraction-py"><em>Extracting signals of a probabilistic atlas of rest functional regions</em></a>).</p>
 <p>For another atlas this information can be computed for each region with
 the <a class="reference internal" href="../modules/generated/nilearn.plotting.find_xyz_cut_coords.html#nilearn.plotting.find_xyz_cut_coords" title="nilearn.plotting.find_xyz_cut_coords"><tt class="xref py py-func docutils literal"><span class="pre">nilearn.plotting.find_xyz_cut_coords</span></tt></a> function
-(see example: <a class="reference internal" href="../auto_examples/connectivity/plot_multi_subject_connectome.html#example-connectivity-plot-multi-subject-connectome-py"><em>Group Sparse inverse covariance for multi-subject connectome</em></a>).</p>
+(see example:
+<a class="reference internal" href="../auto_examples/connectivity/plot_multi_subject_connectome.html#example-connectivity-plot-multi-subject-connectome-py"><em>Group Sparse inverse covariance for multi-subject connectome</em></a>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span><span class="p">,</span> <span class="n">plotting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">atlas_region_coords</span> <span class="o">=</span> <span class="p">[</span><span class="n">plotting</span><span class="o">.</span><span class="n">find_xyz_cut_coords</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">image</span><span class="o">.</span><span class="n">iter_img</span><span class="p">(</span><span class="n">atlas_filename</span><span class="p">)]</span>
+</pre></div>
+</div>
 <a class="reference external image-reference" href="../auto_examples/connectivity/plot_probabilistic_atlas_extraction.html"><img alt="../_images/plot_probabilistic_atlas_extraction_21.png" src="../_images/plot_probabilistic_atlas_extraction_21.png" /></a>
 <p>As you can see, the correlation matrix gives a very &#8220;full&#8221; graph: every
 node is connected to every other one. This is because is also captures
 indirect connections. In the next section we will see how to focus on
-only direction connectoms.</p>
+only direct connections.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

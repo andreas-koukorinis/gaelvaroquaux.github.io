@@ -1,0 +1,57 @@
+
+
+.. _example_manipulating_visualizing_plot_smooth_mean_image.py:
+
+
+Smoothing an image
+===================
+
+Here we smooth a mean EPI image and plot the result
+
+As we vary the smoothing FWHM, note how we decrease the amount of noise,
+but also loose spatial details. In general, the best amount of smoothing
+for a given analysis depends on the spatial extent of the effects that
+are expected.
+
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_smooth_mean_image_2.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_smooth_mean_image_5.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_smooth_mean_image_3.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_smooth_mean_image_4.png
+            :scale: 47
+
+    *
+
+      .. image:: images/plot_smooth_mean_image_1.png
+            :scale: 47
+
+
+
+
+**Python source code:** :download:`plot_smooth_mean_image.py <plot_smooth_mean_image.py>`
+
+.. literalinclude:: plot_smooth_mean_image.py
+    :lines: 13-
+
+**Total running time of the example:**  13.31 seconds 
+( 0 minutes  13.31 seconds)
+    

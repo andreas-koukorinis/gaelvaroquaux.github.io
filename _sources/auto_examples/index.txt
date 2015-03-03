@@ -663,6 +663,30 @@ See :ref:`plotting` and :ref:`data_manipulation` for more details.
 .. raw:: html
 
 
+    <div class="thumbnailContainer" tooltip="Here we smooth a mean EPI image and plot the result">
+
+.. figure:: manipulating_visualizing/images/thumb/plot_smooth_mean_image.png
+   :target: ./manipulating_visualizing/plot_smooth_mean_image.html
+
+   :ref:`example_manipulating_visualizing_plot_smooth_mean_image.py`
+
+
+.. raw:: html
+
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   manipulating_visualizing/plot_smooth_mean_image
+
+
+
+.. raw:: html
+
+
     <div class="thumbnailContainer" tooltip="Visualizing a probablistic atlas requires visualizing the different maps that compose it.">
 
 .. figure:: manipulating_visualizing/images/thumb/plot_probabilistic_atlas.png

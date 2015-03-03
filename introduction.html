@@ -293,7 +293,7 @@ usage of machine learning requires some understanding of the models.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Data mining / exploration:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">Data-driven exploration of brain images. <a class="reference internal" href="building_blocks/unsupervised_learning.html#unsupervised-learning"><em>Unsupervised learning</em></a>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">Data-driven exploration of brain images. <em class="xref std std-ref">unsupervised_learning</em>
 extracts structure from the data, such as <a class="reference external" href="http://scikit-learn.org/stable/modules/clustering.html">clusters</a> or
 <a class="reference external" href="http://scikit-learn.org/stable/modules/decomposition.html">multivariate decompositions</a>
 (<em>latent factors</em> such as ICA). This may be useful for implementing
@@ -328,7 +328,7 @@ brain images to behavioral or clinical observations.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Unsupervised learning:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><a class="reference internal" href="building_blocks/unsupervised_learning.html#unsupervised-learning"><em>Unsupervised learning</em></a> is concerned with data <cite>X</cite> without any
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first"><em class="xref std std-ref">unsupervised_learning</em> is concerned with data <cite>X</cite> without any
 labels. It analyzes the structure of a dataset, for instance
 <strong>clustering</strong> or extracting latent factors such as with <strong>independent
 components analysis (ICA)</strong>.</p>
@@ -477,7 +477,7 @@ input either a filename, or a <a class="reference external" href="http://nipy.or
 &#8220;niimg-like&#8221;.</p>
 <p>For instance, suppose that you have a Tmap file saved in a Nifti file
 &#8220;t_map000.nii&#8221;, in the directory &#8220;/home/user&#8221;, to visualize it, you will
-first import the plotting functionality:</p>
+first import the <a class="reference internal" href="manipulating_visualizing/plotting.html#plotting"><em>plotting</em></a> functionality:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 </pre></div>
 </div>
@@ -497,8 +497,39 @@ the <a class="reference internal" href="modules/reference.html#module-nilearn.im
 <p>The returned value, <cite>smoothed_img</cite> is a <a class="reference external" href="http://nipy.org/nibabel/nibabel_images.html">NiftiImage object</a>, and can be either passed
 to other nilearn functions operating on niimgs (neuroimaging images), or
 saved to disk with:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">smoothed_img</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">t_map000_smoothed</span><span class="o">.</span><span class="n">nii</span><span class="s">&quot;)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">smoothed_img</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="s">&quot;/home/user/t_map000_smoothed.nii&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>Finally, nilearn deals with Nifti images that come in two flavors: 3D
+images, that represent a brain volume, and 4D images, that represent a
+series of brain volume. To extract the n-th 3D image in a 4D image, use
+<a class="reference internal" href="modules/generated/nilearn.image.index_img.html#nilearn.image.index_img" title="nilearn.image.index_img"><tt class="xref py py-func docutils literal"><span class="pre">image.index_img</span></tt></a> (keep in mind that indexing starts at 0 in
+Python):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">first_volume</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">index_img</span><span class="p">(</span><span class="s">&quot;/home/user/fmri_volumes.nii&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To do a loop over each volume of a 4D image, use <a class="reference internal" href="modules/generated/nilearn.image.iter_img.html#nilearn.image.iter_img" title="nilearn.image.iter_img"><tt class="xref py py-func docutils literal"><span class="pre">image.iter_img</span></tt></a>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">volume</span> <span class="ow">in</span> <span class="n">image</span><span class="o">.</span><span class="n">iter_img</span><span class="p">(</span><span class="s">&quot;/home/user/fmri_volumes.nii&quot;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">smoothed_img</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">smooth_img</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise: varying the amount of smoothing</strong></p>
+<p>Want to sharpen your skills with nilearn?
+Compute the mean EPI for first subject of the ADHD
+dataset downloaded with <a class="reference internal" href="modules/generated/nilearn.datasets.fetch_adhd.html#nilearn.datasets.fetch_adhd" title="nilearn.datasets.fetch_adhd"><tt class="xref py py-func docutils literal"><span class="pre">nilearn.datasets.fetch_adhd</span></tt></a>, and
+smooth it with an FWHM varying from 0mm to 20mm in increments of 5mm</p>
+<p><strong>Hints:</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li>Inspect the &#8216;.keys()&#8217; of the object returned by
+<a class="reference internal" href="modules/generated/nilearn.datasets.fetch_adhd.html#nilearn.datasets.fetch_adhd" title="nilearn.datasets.fetch_adhd"><tt class="xref py py-func docutils literal"><span class="pre">nilearn.datasets.fetch_adhd</span></tt></a></li>
+<li>Look at the &#8220;reference&#8221; section of the documentation: there is a
+function to compute the mean of a 4D image</li>
+<li>You can do a for loop in Python. You can use the &#8220;range&#8221; function</li>
+<li>The solution is found <a class="reference internal" href="auto_examples/manipulating_visualizing/plot_smooth_mean_image.html#example-manipulating-visualizing-plot-smooth-mean-image-py"><em>here</em></a></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>

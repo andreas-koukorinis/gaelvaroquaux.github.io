@@ -321,7 +321,7 @@ our analysis to the <cite>face</cite> and <cite>cat</cite> conditions:</p>
 </div>
 <p>Then we prepare the fMRI data: we use the <a class="reference internal" href="../modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" title="nilearn.input_data.NiftiMasker"><tt class="xref py py-class docutils literal"><span class="pre">NiftiMasker</span></tt></a> to apply the
 <cite>mask_vt</cite> mask to the 4D fMRI data, so that its shape becomes (n_samples,
-n_features) (see <a class="reference internal" href="../building_blocks/manipulating_mr_images.html#mask-4d-2-3d"><em>From 4D to 2D arrays</em></a> for a discussion on using masks).</p>
+n_features) (see <a class="reference internal" href="../manipulating_visualizing/manipulating_images.html#mask-4d-2-3d"><em>From 4D to 2D arrays</em></a> for a discussion on using masks).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">seemingly minor data preparation can matter a lot on the final score,
@@ -344,8 +344,8 @@ for instance standardizing the data.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../building_blocks/manipulating_mr_images.html#loading-data"><em>Loading data</em></a></li>
-<li><a class="reference internal" href="../building_blocks/pipeline_introduction.html#masking"><em>Masking the data: from 4D image to 2D array</em></a></li>
+<li><a class="reference internal" href="../manipulating_visualizing/manipulating_images.html#loading-data"><em>Loading data</em></a></li>
+<li><a class="reference internal" href="../building_blocks/manual_pipeline.html#masking"><em>Masking the data: from 4D image to 2D array</em></a></li>
 </ul>
 </div>
 </div>
@@ -556,9 +556,6 @@ of the SVC&#8217;s weights.</li>
 <li>we then create a figure and plot as a background the first EPI image</li>
 <li>finally we plot the SVC&#8217;s weights after masking the zero values</li>
 </ul>
-<div class="figure align-right">
-<a class="reference external image-reference" href="../auto_examples/plot_haxby_simple.html"><img alt="../_images/plot_haxby_simple_12.png" src="../_images/plot_haxby_simple_12.png" style="width: 331.5px; height: 169.0px;" /></a>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># Retrieve the SVC discriminating weights</span>
 <span class="n">coef_</span> <span class="o">=</span> <span class="n">svc</span><span class="o">.</span><span class="n">coef_</span>
 
@@ -581,10 +578,13 @@ of the SVC&#8217;s weights.</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="figure">
+<a class="reference external image-reference" href="../auto_examples/plot_haxby_simple.html"><img alt="../_images/plot_haxby_simple_12.png" src="../_images/plot_haxby_simple_12.png" style="width: 331.5px; height: 169.0px;" /></a>
+</div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../building_blocks/plotting.html#plotting"><em>Plotting brain images</em></a></li>
+<li><a class="reference internal" href="../manipulating_visualizing/plotting.html#plotting"><em>Plotting brain images</em></a></li>
 </ul>
 </div>
 </div>
@@ -663,7 +663,7 @@ and plot them.</li>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
-<li><a class="reference internal" href="../building_blocks/plotting.html#plotting"><em>Plotting brain images</em></a></li>
+<li><a class="reference internal" href="../manipulating_visualizing/plotting.html#plotting"><em>Plotting brain images</em></a></li>
 </ul>
 </div>
 <div class="topic">
