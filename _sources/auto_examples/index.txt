@@ -323,30 +323,6 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
 .. raw:: html
 
 
-    <div class="thumbnailContainer" tooltip="This example shows how to extract signals from regions defined by an atlas, and to estimate a f...">
-
-.. figure:: connectivity/images/thumb/plot_adhd_covariance.png
-   :target: ./connectivity/plot_adhd_covariance.html
-
-   :ref:`example_connectivity_plot_adhd_covariance.py`
-
-
-.. raw:: html
-
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   connectivity/plot_adhd_covariance
-
-
-
-.. raw:: html
-
-
     <div class="thumbnailContainer" tooltip="We use spatially-constrained Ward-clustering to create a set of parcels. These parcels are part...">
 
 .. figure:: connectivity/images/thumb/plot_rest_clustering.png
@@ -371,7 +347,7 @@ See :ref:`parcellating_brain`, :ref:`extracting_rsn` or
 .. raw:: html
 
 
-    <div class="thumbnailContainer" tooltip="This example shows how to extract signals from regions defined by an atlas, and to estimate a c...">
+    <div class="thumbnailContainer" tooltip="This example shows how to estimate a connectome on a groupe of subjects using the group sparse ...">
 
 .. figure:: connectivity/images/thumb/plot_multi_subject_connectome.png
    :target: ./connectivity/plot_multi_subject_connectome.html

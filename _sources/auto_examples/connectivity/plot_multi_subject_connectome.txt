@@ -3,11 +3,12 @@
 .. _example_connectivity_plot_multi_subject_connectome.py:
 
 
-Computation of covariance matrix between brain regions
-======================================================
+Group Sparse inverse covariance for multi-subject connectome
+=============================================================
 
-This example shows how to extract signals from regions defined by an atlas,
-and to estimate a covariance matrix based on these signals.
+This example shows how to estimate a connectome on a groupe of subjects
+using the group sparse inverse covariance estimate.
+
 
 
 
@@ -343,10 +344,10 @@ and to estimate a covariance matrix based on these signals.
   [GroupSparseCovarianceCV.fit] * iteration 11 (11 %) variation (max norm): 1.100e-03  ...
   [GroupSparseCovarianceCV.fit] tolerance reached at iteration number 12: 4.511e-04
   -- Computing graph-lasso precision matrices ...
-  [GraphLassoCV] Done refinement  1 out of 4:   0s
-  [GraphLassoCV] Done refinement  2 out of 4:   0s
-  [GraphLassoCV] Done refinement  3 out of 4:   0s
-  [GraphLassoCV] Done refinement  4 out of 4:   1s
+  [GraphLassoCV] Done refinement  1 out of 4:   1s
+  [GraphLassoCV] Done refinement  2 out of 4:   2s
+  [GraphLassoCV] Done refinement  3 out of 4:   3s
+  [GraphLassoCV] Done refinement  4 out of 4:   4s
   [graph_lasso] Iteration   0, cost  1.73e+02, dual gap 1.041e+00
   [graph_lasso] Iteration   1, cost  1.73e+02, dual gap -1.315e-03
   [graph_lasso] Iteration   2, cost  1.73e+02, dual gap -6.186e-04
@@ -358,8 +359,8 @@ and to estimate a covariance matrix based on these signals.
 **Python source code:** :download:`plot_multi_subject_connectome.py <plot_multi_subject_connectome.py>`
 
 .. literalinclude:: plot_multi_subject_connectome.py
-    :lines: 8-
+    :lines: 9-
 
-**Total running time of the example:**  51.77 seconds 
-( 0 minutes  51.77 seconds)
+**Total running time of the example:**  205.68 seconds 
+( 3 minutes  25.68 seconds)
     

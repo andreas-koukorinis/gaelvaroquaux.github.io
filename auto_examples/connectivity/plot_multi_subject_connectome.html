@@ -184,10 +184,10 @@ $(function () {
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="computation-of-covariance-matrix-between-brain-regions">
-<span id="example-connectivity-plot-multi-subject-connectome-py"></span><h1>Computation of covariance matrix between brain regions<a class="headerlink" href="#computation-of-covariance-matrix-between-brain-regions" title="Permalink to this headline">¶</a></h1>
-<p>This example shows how to extract signals from regions defined by an atlas,
-and to estimate a covariance matrix based on these signals.</p>
+  <div class="section" id="group-sparse-inverse-covariance-for-multi-subject-connectome">
+<span id="example-connectivity-plot-multi-subject-connectome-py"></span><h1>Group Sparse inverse covariance for multi-subject connectome<a class="headerlink" href="#group-sparse-inverse-covariance-for-multi-subject-connectome" title="Permalink to this headline">¶</a></h1>
+<p>This example shows how to estimate a connectome on a groupe of subjects
+using the group sparse inverse covariance estimate.</p>
 <ul class="horizontal">
 <li><a class="first reference internal image-reference" href="../../_images/plot_multi_subject_connectome_3.png"><img alt="../../_images/plot_multi_subject_connectome_3.png" src="../../_images/plot_multi_subject_connectome_3.png" style="width: 376.0px; height: 282.0px;" /></a>
 </li>
@@ -492,10 +492,10 @@ Processing file /home/varoquau/nilearn_data/adhd/data/2014113/2014113_rest_tshif
 [GroupSparseCovarianceCV.fit] * iteration 11 (11 %) variation (max norm): 1.100e-03  ...
 [GroupSparseCovarianceCV.fit] tolerance reached at iteration number 12: 4.511e-04
 -- Computing graph-lasso precision matrices ...
-[GraphLassoCV] Done refinement  1 out of 4:   0s
-[GraphLassoCV] Done refinement  2 out of 4:   0s
-[GraphLassoCV] Done refinement  3 out of 4:   0s
-[GraphLassoCV] Done refinement  4 out of 4:   1s
+[GraphLassoCV] Done refinement  1 out of 4:   1s
+[GraphLassoCV] Done refinement  2 out of 4:   2s
+[GraphLassoCV] Done refinement  3 out of 4:   3s
+[GraphLassoCV] Done refinement  4 out of 4:   4s
 [graph_lasso] Iteration   0, cost  1.73e+02, dual gap 1.041e+00
 [graph_lasso] Iteration   1, cost  1.73e+02, dual gap -1.315e-03
 [graph_lasso] Iteration   2, cost  1.73e+02, dual gap -6.186e-04
@@ -607,8 +607,8 @@ Processing file /home/varoquau/nilearn_data/adhd/data/2014113/2014113_rest_tshif
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the example:</strong>  51.77 seconds
-( 0 minutes  51.77 seconds)</p>
+<p><strong>Total running time of the example:</strong>  205.68 seconds
+( 3 minutes  25.68 seconds)</p>
 </div>
 
 

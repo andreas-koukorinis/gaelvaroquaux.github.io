@@ -1,6 +1,6 @@
 """
-Sparse inverse covariance for a functional connectome
-======================================================
+Group Sparse inverse covariance for multi-subject connectome
+=============================================================
 
 This example shows how to extract signals from regions defined by an atlas,
 and to estimate a functional connectome using a sparse inverse covariance

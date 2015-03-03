@@ -1,9 +1,10 @@
 """
-Computation of covariance matrix between brain regions
-======================================================
+Group Sparse inverse covariance for multi-subject connectome
+=============================================================
 
-This example shows how to extract signals from regions defined by an atlas,
-and to estimate a covariance matrix based on these signals.
+This example shows how to estimate a connectome on a groupe of subjects
+using the group sparse inverse covariance estimate.
+
 """
 import matplotlib.pyplot as plt
 import numpy as np
